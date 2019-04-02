@@ -5,7 +5,7 @@ import mongoose from 'mongoose'
 import notesRouter from './routes/notes'
 import getMongoConnection from './configuration/mongodbConf'
 
-var port = process.env.PORT || 5000; // set our port
+var port = process.env.PORT || 6000; // set our port
 //var router = express.Router();
 
 app.use(bodyParser.urlencoded({
@@ -28,48 +28,6 @@ getMongoConnection()
         res.send('Hello welcome to our api!');
       });
 
-
-// router.use(function (req, res, next) {
-//     console.log('Something is happening.');
-//     next(); 
-// });
-
-// router.get('/', function (req, res) {
-//     res.json({
-//         message: 'hooray! welcome to our api!'
-//     });
-// });
-
-// router.route('/notes')
-
-//     // create a note (accessed at POST http://localhost:5000/api/notes)
-//     .post((req, res) => {
-
-//         var note = new Note(); // create a new instance of the note model
-//         note.note_id = req.body.note_id; // set the notes name (comes from the request)
-//         note.noteTitle = req.body.noteTitle; 
-//         note.noteDescription = req.body.noteDescription; 
-//         note.createdAt = req.body.createdAt; 
-//         // save the note and check for errors
-//         note.save((err) => {
-//             if (err)
-//                 res.send(err);
-
-//             res.json({
-//                 message: 'Note created!'
-//             });
-//         });
-
-//     })
-
-//     .get((req, res) => {
-//         Note.find((err, notes) => {
-//             if (err)
-//                 res.send(err);
-
-//             res.json(notes);
-//         });
-//     });
 
 // router.route('/notes/:note_id')
 //     .get((req, res) => {
