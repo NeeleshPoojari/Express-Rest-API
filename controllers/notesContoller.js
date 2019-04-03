@@ -22,7 +22,49 @@ const notesController = {
             });
         });
 
+    },
+    getNote: (req, res) => {
+        console.log(req.params.note_id)
+        Note.findById(req.params.note_id, (err, note) => {
+            if (err)
+                res.send(err);
+            res.json(note);
+        });
+
+    },
+    updateNote: (req, res) => {
+        Note.findById(req.params.note_id, (err, note) => {
+
+            if (err)
+                res.send(err);
+
+            note.noteTitle = req.body.noteTitle;
+            note.noteDescription = req.body.noteDescription;
+
+        
+            note.save((err) => {
+                if (err)
+                    res.send(err);
+
+                res.json({
+                    message: 'Note updated!'
+                });
+            });
+        });
+    },
+    deleteNote: (req, res) => {
+        Note.deleteOne({
+            _id: req.params.note_id
+        }, (err, note) => {
+            if (err)
+                res.send(err);
+
+            res.json({
+                message: 'Successfully deleted'
+            });
+        });
     }
+
 }
 
 module.exports = notesController;
